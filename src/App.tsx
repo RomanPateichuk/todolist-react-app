@@ -1,28 +1,52 @@
 import React, { useState } from 'react';
-import { Todolist } from './Todolist'
 import { v1 } from 'uuid'
-import { AddItemForm } from './AddItemForm'
 import './App.css';
+
+//components
+import { AddItemForm } from './AddItemForm'
+import { Todolist } from './Todolist'
+
+// material ui
 import MenuIcon from '@mui/icons-material/Menu'
 import { AppBar, Box, Button, IconButton, Toolbar, Typography, Container, Grid, Paper } from '@mui/material';
 
 // import types 
 import { TaskType } from './Todolist'
 
-
 // type definitions
 export type FilterValuesType = 'all' | 'completed' | 'active'
-type TodolistType = {
+export type TodolistType = {
   id: string
   title: string
   filter: FilterValuesType
 }
 
-type TasksStateType = {
+export type TasksStateType = {
   [key: string]: Array<TaskType>
 }
 
 function App() {
+
+  let todolistId1 = v1()
+  let todolistId2 = v1()
+
+  let [todolists, setTodolists] = useState<Array<TodolistType>>([
+    { id: todolistId1, title: 'What to learn', filter: 'all' },
+    { id: todolistId2, title: 'What to buy', filter: 'all' }
+  ])
+
+  let [tasksObj, setTasks] = useState<TasksStateType>({
+    [todolistId1]: [
+      { id: v1(), title: 'CSS', isDone: true },
+      { id: v1(), title: 'JS', isDone: true },
+      { id: v1(), title: 'React', isDone: false },
+      { id: v1(), title: 'Redux', isDone: false },],
+    [todolistId2]: [
+      { id: v1(), title: 'Book', isDone: true },
+      { id: v1(), title: 'Milk', isDone: true },
+      { id: v1(), title: 'Beer', isDone: false },
+    ]
+  })
 
   const removeTask = (id: string, todolistId: string) => {
     let tasks = tasksObj[todolistId]
@@ -41,6 +65,14 @@ function App() {
     let newTasks = [task, ...tasks]
     tasksObj[todolistId] = newTasks
     setTasks({ ...tasksObj })
+  }
+
+  const changeTaskTitle = (newTitle: string, toDoListId: string, taskId: string) => {
+    let task = tasksObj[toDoListId].find((e) => e.id === taskId)
+    if (task) {
+      task.title = newTitle
+      setTasks({ ...tasksObj })
+    }
   }
 
   const changeStatus = (id: string, isDone: boolean, todolistId: string) => {
@@ -67,27 +99,6 @@ function App() {
     setTasks({ ...tasksObj })
   }
 
-  let todolistId1 = v1()
-  let todolistId2 = v1()
-
-  let [todolists, setTodolists] = useState<Array<TodolistType>>([
-    { id: todolistId1, title: 'What to learn', filter: 'all' },
-    { id: todolistId2, title: 'What to buy', filter: 'all' }
-  ])
-
-  let [tasksObj, setTasks] = useState<TasksStateType>({
-    [todolistId1]: [
-      { id: v1(), title: 'CSS', isDone: true },
-      { id: v1(), title: 'JS', isDone: true },
-      { id: v1(), title: 'React', isDone: false },
-      { id: v1(), title: 'Redux', isDone: false },],
-    [todolistId2]: [
-      { id: v1(), title: 'Book', isDone: true },
-      { id: v1(), title: 'Milk', isDone: true },
-      { id: v1(), title: 'Beer', isDone: false },
-    ]
-  })
-
   const addTodoList = (title: string) => {
     const newTodoList: TodolistType = { id: v1(), title: title, filter: 'all' }
     setTodolists([newTodoList, ...todolists])
@@ -95,14 +106,6 @@ function App() {
       ...tasksObj,
       [newTodoList.id]: []
     })
-  }
-
-  const changeTaskTitle = (newTitle: string, toDoListId: string, taskId: string) => {
-    let task = tasksObj[toDoListId].find((e) => e.id === taskId)
-    if (task) {
-      task.title = newTitle
-      setTasks({ ...tasksObj })
-    }
   }
 
   const changeTodoListTitle = (newTitle: string, toDoListId: string) => {
@@ -114,23 +117,23 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position='static'>
           <Toolbar>
             <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='menu'
               sx={{ mr: 2 }}
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
               News
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color='inherit'>Login</Button>
           </Toolbar>
         </AppBar>
       </Box>
