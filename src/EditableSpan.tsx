@@ -1,3 +1,4 @@
+import { Button, TextField } from '@mui/material';
 import React, { ChangeEvent, useState } from 'react';
 
 type EditableSpanPropsType = {
@@ -24,9 +25,9 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
   }
 
   return editMode
-    ? <div>
-      <input type="text" autoFocus value={value} onChange={onChangeValueHandler} />
-      <button onClick={onSaveNewText}>save</button>
+    ? <div className='add-task-wrapper'>
+      <TextField autoFocus value={value} onChange={onChangeValueHandler} />
+      <Button onClick={onSaveNewText} variant="outlined">save</Button>
     </div>
     : <span onDoubleClick={activateEditMode}>{props.title}</span>
 };
