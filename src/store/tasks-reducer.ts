@@ -1,4 +1,3 @@
-import { Type } from 'typescript'
 import { v1 } from 'uuid'
 import { TasksStateType } from '../App'
 import { addTodoListActionType, removeTodoListActionType } from './todolists-reducer'
@@ -31,8 +30,9 @@ type changeTaskStatusActionType = {
 
 type ActionsType = removeTaskActionType | addTaskActionType | changeTaskTitleActionType | changeTaskStatusActionType | addTodoListActionType | removeTodoListActionType
 
+const initialState = {}
 
-export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksStateType => {
+export const tasksReducer = (state: TasksStateType = initialState, action: ActionsType): TasksStateType => {
   switch (action.type) {
     case 'REMOVE-TASK': {
       const stateCopy = { ...state }
@@ -83,7 +83,8 @@ export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksS
       return stateCopy
     }
 
-    default: throw new Error('I dont understand')
+    default:
+      return state
   }
 }
 
