@@ -8,7 +8,8 @@ type EditableSpanPropsType = {
   saveEdit: (newText: string) => void
 };
 
-export const EditableSpan = (props: EditableSpanPropsType) => {
+export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
+  console.log("EditableSpan is called");
   const [editMode, setEditMode] = useState(false);
   const [value, setValue] = useState(props.title);
 
@@ -32,4 +33,4 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
       <Button onClick={onSaveNewText} variant="outlined">save</Button>
     </div>
     : <span onDoubleClick={activateEditMode}>{props.title}</span>
-};
+})

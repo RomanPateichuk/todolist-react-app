@@ -9,7 +9,8 @@ type AddItemFromProps = {
   addItem: (taskText: string) => void
 }
 
-export function AddItemForm(props: AddItemFromProps) {
+export const AddItemForm = React.memo(function (props: AddItemFromProps) {
+  console.log('AddItemFrom is called');
   const { addItem } = props
   let [error, setError] = useState<string | null>(null)
   let [taskText, setTaskText] = useState('')
@@ -18,7 +19,9 @@ export function AddItemForm(props: AddItemFromProps) {
   }
 
   const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    setError(null)
+    if (error !== null) {
+      setError(null)
+    }
     if (e.code === 'Enter') {
       callAddTask()
     }
@@ -49,4 +52,4 @@ export function AddItemForm(props: AddItemFromProps) {
       </IconButton>
     </div>
   )
-}
+})
