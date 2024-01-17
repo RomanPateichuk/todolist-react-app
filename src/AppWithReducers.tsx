@@ -5,7 +5,7 @@ import { tasksReducer, removeTaskAC, addTaskAC, changeTaskStatusAC, changeTaskTi
 import { todoListsReducer, removeTodoListAC, addTodoListAC, changeTodoLisTitletAC, changeTodoLisFiltertAC } from './store/todolists-reducer';
 
 //components
-import { AddItemForm } from './AddItemForm'
+import { AddItemForm } from './AddItemForm/AddItemForm'
 import { Todolist } from './Todolist'
 
 // material ui

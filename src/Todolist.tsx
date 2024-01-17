@@ -3,7 +3,7 @@ import './App.css'
 
 // components
 import { EditableSpan } from './EditableSpan'
-import { AddItemForm } from './AddItemForm'
+import { AddItemForm } from './AddItemForm/AddItemForm'
 import { Task } from './Task'
 
 // material ui
@@ -11,7 +11,7 @@ import Delete from '@mui/icons-material/Delete';
 import { Button, IconButton } from '@mui/material'
 
 // import types 
-import { FilterValuesType } from './App'
+import { FilterValuesType } from './App/App'
 
 
 // type definitions
