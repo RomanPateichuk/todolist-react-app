@@ -1,11 +1,13 @@
 import React from 'react';
-import { Component } from 'react';
 import { Provider } from "react-redux"
-import { store, AppRootState } from '../store/store'
+import {  AppRootState } from '../store/store'
 import { combineReducers, createStore } from 'redux';
 import { tasksReducer } from '../store/tasks-reducer';
 import { todoListsReducer } from '../store/todolists-reducer';
 
+export default {
+  title: 'ReduxStoreProviderDecorator'
+}
 const rootReducer = combineReducers(
   {
     tasks: tasksReducer,

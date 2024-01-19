@@ -23,7 +23,7 @@ export const Task = React.memo((props: TaskPropsType) => {
 
   const saveEditContainer = useCallback((newText: string) => {
     props.changeTaskTitle(newText, props.toDoListId, props.task.id)
-  }, [props.task.id, props.toDoListId, props.changeTaskTitle])
+  }, [props, props.task.id, props.toDoListId, props.changeTaskTitle])
 
   return <li key={props.task.id} className={props.task.isDone ? 'is-done' : ''} >
     <Checkbox checked={props.task.isDone} onChange={onChangeStatusHandler} />

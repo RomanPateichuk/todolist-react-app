@@ -1,7 +1,4 @@
-import { action } from '@storybook/addon-actions'
 import AppWithRedux from './AppWithRedux/AppWithRedux'
-import { useDispatch, useSelector } from 'react-redux';
-import React, { useCallback } from 'react'
 import { ReduxStoreProviderDecorator } from './stories/ReduxStoreProviderDecorator'
 export default {
   title: 'AppWithRedux Component',
@@ -9,7 +6,7 @@ export default {
   decorators: [ReduxStoreProviderDecorator]
 }
 
-export const AppWuthReduxBaseExample = () => {
+export const AppWithReduxBaseExample = () => {
   return <>
     <AppWithRedux />
   </>
