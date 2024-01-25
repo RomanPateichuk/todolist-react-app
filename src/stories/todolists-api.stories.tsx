@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {todolistsApi, todoListType} from "../api/todolists-api";
 
 
@@ -175,8 +175,8 @@ export const UpdateTask = () => {
   const [description, setDescription] = useState<string>('description 1')
   const [status, setStatus] = useState<number>(0)
   const [priority, setPriority] = useState<number>(0)
-  const [startDate, setStartDate] = useState<string>('')
-  const [deadline, setDeadline] = useState<string>('')
+  // const [startDate, setStartDate] = useState<string>('')
+  // const [deadline, setDeadline] = useState<string>('')
 
   const updateTaskHandler = () => {
     todolistsApi.updateTask(toDoListId, taskId, {

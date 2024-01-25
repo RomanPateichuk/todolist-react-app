@@ -5,9 +5,12 @@ import { combineReducers, createStore } from 'redux';
 import { tasksReducer } from '../store/tasks-reducer';
 import { todoListsReducer } from '../store/todolists-reducer';
 
-export default {
+const Store = {
   title: 'ReduxStoreProviderDecorator'
 }
+
+export default Store
+
 const rootReducer = combineReducers(
   {
     tasks: tasksReducer,

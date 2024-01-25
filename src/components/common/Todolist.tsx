@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, {useCallback, useEffect} from 'react'
 import '../../App.css'
 
 // components
@@ -11,6 +11,8 @@ import Delete from '@mui/icons-material/Delete';
 import { Button, IconButton } from '@mui/material'
 import {TaskStatuses, TaskType} from "../../api/todolists-api";
 import {FilterValuesType} from "../../store/todolists-reducer";
+import {useDispatch} from "react-redux";
+import {fetchTasksThunk} from "../../store/tasks-reducer";
 
 type PropsType = {
   title: string
@@ -36,6 +38,14 @@ export const Todolist = React.memo(function (props: PropsType) {
   const onActivecliCkHandler = useCallback(() => changeFilter('active', id), [changeFilter, id])
   const onCompletedClickHandler = useCallback(() => changeFilter('completed', id), [changeFilter, id])
   const onRemoveTodolist = useCallback(() => removeTodolist(id), [removeTodolist, id])
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    // dispatch(fetchTasksTC(props.id))
+    console.log(props.id)
+    fetchTasksThunk(dispatch, props.id)
+  }, [])
 
 
   const addTaskContainer = useCallback((title: string) => {

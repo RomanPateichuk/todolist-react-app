@@ -21,6 +21,12 @@ import {AppBar, Box, Button, IconButton, Toolbar, Typography, Container, Grid, P
 import {TaskPriorities, TaskStatuses} from "../../api/todolists-api";
 
 export const AppWithReducers: React.FC = () => {
+  //
+  //
+  // to do
+  // develop  with api
+  //
+  //
 
   let todolistId1 = v1()
   let todolistId2 = v1()

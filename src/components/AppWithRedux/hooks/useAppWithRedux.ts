@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootState} from "../../../store/store";
-import {useCallback} from "react";
+import {useCallback, useEffect} from "react";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "../../../store/tasks-reducer";
 import {
   addTodoListAC,
   changeTodoLisFiltertAC,
-  changeTodoLisTitletAC,
+  changeTodoLisTitletAC, fetchTodolistsThunk,
   removeTodoListAC
 } from "../../../store/todolists-reducer";
 import {FilterValuesType, TasksStateType, TodolistType} from "../AppWithRedux";
@@ -18,6 +18,11 @@ export const useAppWithRedux = () =>{
   const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
 
 
+  useEffect(()=>{
+    //dispatch(fetchTodolistsThunk)
+   fetchTodolistsThunk(dispatch)
+  },[])
+  
   // actions to tasks reducer
 
   const removeTask = useCallback((id: string, todolistId: string) => {
