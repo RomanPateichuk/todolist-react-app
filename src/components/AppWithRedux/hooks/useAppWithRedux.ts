@@ -4,7 +4,7 @@ import {useCallback, useEffect} from "react";
 import {addTaskTC, removeTaskTC, updateTaskTC} from "../../../store/tasks-reducer";
 import {
   addTodolistTC,
-  changeTodoLisFiltertAC,
+  changeTodoLisFilterAC,
   changeTodolistTitleTC,
   fetchTodolistsTC,
   removeTodolistTC
@@ -49,7 +49,7 @@ export const useAppWithRedux = () =>{
   // actions to todolist reducer
 
   const changeFilter = useCallback((value: FilterValuesType, todolistId: string) => {
-    dispatch(changeTodoLisFiltertAC(value, todolistId))
+    dispatch(changeTodoLisFilterAC(value, todolistId))
   }, [dispatch])
 
   const removeTodoList = useCallback((todolistId: string) => {

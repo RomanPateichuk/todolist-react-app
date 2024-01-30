@@ -6,8 +6,8 @@ import {
   todoListsReducer,
   removeTodoListAC,
   addTodoListAC,
-  changeTodoLisTitletAC,
-  changeTodoLisFiltertAC,
+  changeTodoLisTitleAC,
+  changeTodoLisFilterAC,
   FilterValuesType
 } from '../../store/todolists-reducer';
 
@@ -70,7 +70,7 @@ export const AppWithReducers: React.FC = () => {
   // actions to todolist reducer
 
   const changeFilter = (value: FilterValuesType, todolistId: string) => {
-    dispatchToTodolistReducer(changeTodoLisFiltertAC(value, todolistId))
+    dispatchToTodolistReducer(changeTodoLisFilterAC(value, todolistId))
   }
 
   const removeTodoList = (todolistId: string) => {
@@ -87,7 +87,7 @@ export const AppWithReducers: React.FC = () => {
   }
 
   const changeTodoListTitle = (newTitle: string, toDoListId: string) => {
-    dispatchToTodolistReducer(changeTodoLisTitletAC(newTitle, toDoListId))
+    dispatchToTodolistReducer(changeTodoLisTitleAC(newTitle, toDoListId))
   }
 
   return (

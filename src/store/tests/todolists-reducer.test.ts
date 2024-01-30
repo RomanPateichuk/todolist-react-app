@@ -1,7 +1,7 @@
 import {
   addTodoListAC,
-  changeTodoLisFiltertAC,
-  changeTodoLisTitletAC,
+  changeTodoLisFilterAC,
+  changeTodoLisTitleAC,
   removeTodoListAC,
   setTodoListAC,
   todoListsReducer
@@ -45,7 +45,7 @@ test('todolist should be added', () => {
 test('todolist should be change its name', () => {
 
   let newTodoListTitle = 'New Todolist'
-  let action = changeTodoLisTitletAC(newTodoListTitle, todolistId2)
+  let action = changeTodoLisTitleAC(newTodoListTitle, todolistId2)
 
   const endState = todoListsReducer(startState, action)
   expect(endState[0].title).toBe('What to learn')
@@ -58,7 +58,7 @@ test('todolist filter should be changed', () => {
   let newTodoListFilter: FilterValuesType = 'completed'
 
 
-  let action = changeTodoLisFiltertAC(newTodoListFilter, todolistId2)
+  let action = changeTodoLisFilterAC(newTodoListFilter, todolistId2)
 
   const endState = todoListsReducer(startState, action)
   expect(endState[0].filter).toBe('all')

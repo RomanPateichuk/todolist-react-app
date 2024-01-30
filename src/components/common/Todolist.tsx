@@ -12,7 +12,7 @@ import { Button, IconButton } from '@mui/material'
 import {TaskStatuses, TaskType} from "../../api/todolists-api";
 import {FilterValuesType} from "../../store/todolists-reducer";
 import {useDispatch} from "react-redux";
-import {fetchTasksTC, fetchTasksThunk} from "../../store/tasks-reducer";
+import {fetchTasksTC} from "../../store/tasks-reducer";
 
 type PropsType = {
   title: string
