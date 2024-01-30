@@ -8,8 +8,6 @@ import {
 } from '../todolists-reducer'
 import {v1} from 'uuid'
 import {FilterValuesType, TodoListDomainType} from '../todolists-reducer'
-import {TasksStateType} from "../tasks-reducer";
-import {TaskStatuses} from "../../api/todolists-api";
 
 let startState: Array<TodoListDomainType> = []
 let todolistId1 = v1()
@@ -32,7 +30,13 @@ test('todolist should be remove', () => {
 
 test('todolist should be added', () => {
 
-  let action = addTodoListAC('What to do')
+  let action = addTodoListAC({
+  id: '',
+  order: 0,
+  addedDate: '',
+  title: ''
+  }
+  )
 
   const endState = todoListsReducer(startState, action)
   expect(endState.length).toBe(3)

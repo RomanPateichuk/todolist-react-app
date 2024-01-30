@@ -12,7 +12,7 @@ import { Button, IconButton } from '@mui/material'
 import {TaskStatuses, TaskType} from "../../api/todolists-api";
 import {FilterValuesType} from "../../store/todolists-reducer";
 import {useDispatch} from "react-redux";
-import {fetchTasksThunk} from "../../store/tasks-reducer";
+import {fetchTasksTC, fetchTasksThunk} from "../../store/tasks-reducer";
 
 type PropsType = {
   title: string
@@ -39,12 +39,10 @@ export const Todolist = React.memo(function (props: PropsType) {
   const onCompletedClickHandler = useCallback(() => changeFilter('completed', id), [changeFilter, id])
   const onRemoveTodolist = useCallback(() => removeTodolist(id), [removeTodolist, id])
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<any>()
 
   useEffect(() => {
-    // dispatch(fetchTasksTC(props.id))
-    console.log(props.id)
-    fetchTasksThunk(dispatch, props.id)
+     dispatch(fetchTasksTC(props.id))
   }, [])
 
 

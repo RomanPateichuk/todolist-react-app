@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import {v1} from 'uuid'
 import '../../App.css';
-import {tasksReducer, removeTaskAC, addTaskAC, changeTaskStatusAC, changeTaskTitleAC} from '../../store/tasks-reducer';
+import {tasksReducer, removeTaskAC, addTaskAC, updateTaskAC, changeTaskTitleAC} from '../../store/tasks-reducer';
 import {
   todoListsReducer,
   removeTodoListAC,
@@ -64,7 +64,7 @@ export const AppWithReducers: React.FC = () => {
   }
 
   const changeStatus = (id: string, status: TaskStatuses, todolistId: string) => {
-    dispatchToTaskReducer(changeTaskStatusAC(id, status, todolistId))
+    dispatchToTaskReducer(updateTaskAC(id, status, todolistId))
   }
 
   // actions to todolist reducer
