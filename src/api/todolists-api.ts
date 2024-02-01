@@ -62,7 +62,7 @@ export type UpdateTodolistResponse = {
   fieldsErrors: string[],
   resultCode: number
 }
-type ResponseType<D> = {
+export type ResponseType<D> = {
   resultCode: number,
   messages: string[],
   data: D

@@ -7,15 +7,15 @@ import {
   changeTodoLisFilterAC,
   changeTodolistTitleTC,
   fetchTodolistsTC,
-  removeTodolistTC
+  removeTodolistTC, TodoListDomainType
 } from "../../../store/todolists-reducer";
-import {FilterValuesType, TasksStateType, TodolistType} from "../AppWithRedux";
+import {FilterValuesType, TasksStateType} from "../AppWithRedux";
 import {TaskStatuses} from "../../../api/todolists-api";
 
 export const useAppWithRedux = () =>{
   console.log("AppWithCustomHooks is called");
   const dispatch = useDispatch<any>()
-  const todolists = useSelector<AppRootState, Array<TodolistType>>(state => state.todolists)
+  const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists)
   const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
 
 
