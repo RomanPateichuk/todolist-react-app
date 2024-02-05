@@ -16,10 +16,13 @@ export const useAppWithRedux = () =>{
   const dispatch = useDispatch<any>()
   const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists)
   const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
-
+  const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
   useEffect(()=>{
-    dispatch(fetchTodolistsTC())
-  },[])
+    if(isLoggedIn){
+      dispatch(fetchTodolistsTC())
+    }
+
+  },[isLoggedIn])
 
 
   // actions to tasks reducer

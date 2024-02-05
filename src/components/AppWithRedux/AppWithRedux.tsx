@@ -11,22 +11,33 @@ import {initializeAppTC} from "../../store/app-reducer";
 import { useNavigate } from 'react-router-dom';
 
 export const AppWithRedux = React.memo(() => {
-  // @ts-ignore
-  const initialized = useSelector<AppRootState, boolean>(state => state.app.initialized)
-  const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
+
 
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(initializeAppTC())
-  }, []);
+
+  // useEffect(() => {
+  //   dispatch(initializeAppTC())
+  //   if(!isLoggedIn){
+  //     console.log('isLoggedIn: ', isLoggedIn)
+  //     navigate('/login')
+  //   }
+  // }, [isLoggedIn]);
+
+
 
   useEffect(() => {
-    if(!isLoggedIn){
-      navigate('/login')
-    }
+    dispatch(initializeAppTC())
+    // if(!isLoggedIn){
+    //   console.log('isLoggedIn: ', isLoggedIn)
+    //   navigate('/login')
+    // }
   }, []);
+
+  // @ts-ignore
+  const initialized = useSelector<AppRootState, boolean>(state => state.app.initialized)
+  const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
 
 

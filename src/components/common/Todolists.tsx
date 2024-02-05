@@ -7,6 +7,7 @@ import {AddItemForm} from "../AddItemForm/AddItemForm";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootState} from "../../store/store";
 import {fetchTodolistsTC} from "../../store/todolists-reducer";
+import {useNavigate} from "react-router-dom";
 
 export const Todolists =  () => {
 
@@ -23,8 +24,11 @@ export const Todolists =  () => {
     addTask
   } = useAppWithRedux()
 
+  const navigate = useNavigate()
   const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
-
+  if(!isLoggedIn){
+    navigate('/login')
+  }
   return <div>
     <Grid container style={{padding: '2rem'}}>
       <AddItemForm addItem={addTodoList}/>
