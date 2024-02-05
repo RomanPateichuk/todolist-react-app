@@ -1,15 +1,15 @@
 import React, {useReducer} from 'react';
 import {v1} from 'uuid'
 import '../../App.css';
-import {tasksReducer, removeTaskAC, addTaskAC, updateTaskAC, changeTaskTitleAC} from '../../store/tasks-reducer';
-import {
-  todoListsReducer,
-  removeTodoListAC,
-  addTodoListAC,
-  changeTodoLisTitleAC,
-  changeTodoLisFilterAC,
-  FilterValuesType
-} from '../../store/todolists-reducer';
+// import {tasksReducer, removeTaskAC, addTaskAC, updateTaskAC, changeTaskTitleAC} from '../../store/tasks-reducer';
+// import {
+//   todoListsReducer,
+//   removeTodoListAC,
+//   addTodoListAC,
+//   changeTodoLisTitleAC,
+//   changeTodoLisFilterAC,
+//   FilterValuesType
+// } from '../../store/todolists-reducer';
 
 //components
 import {AddItemForm} from '../AddItemForm/AddItemForm'
@@ -28,26 +28,26 @@ export const AppWithReducers: React.FC = () => {
   //
   //
 
-  let todolistId1 = v1()
-  let todolistId2 = v1()
-
-  let [toDoLists, dispatchToTodolistReducer] = useReducer(todoListsReducer, [
-    {id: todolistId1, title: 'What to learn', filter: 'all', order: 0, addedDate: ''},
-    {id: todolistId2, title: 'What to buy', filter: 'all', order: 0, addedDate: ''}
-  ])
-
-  let [tasksObj, dispatchToTaskReducer] = useReducer(tasksReducer, {
-    [todolistId1]: [
-      {id: v1(), title: 'CSS', description: '', status: TaskStatuses.Completed, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
-      {id: v1(), title: 'JS', description: '', status: TaskStatuses.Completed, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
-      {id: v1(), title: 'React', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
-      {id: v1(), title: 'Redux', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''}],
-    [todolistId2]: [
-      {id: v1(), title: 'Book', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
-      {id: v1(), title: 'Milk', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
-      {id: v1(), title: 'Beer', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
-    ]
-  })
+  // let todolistId1 = v1()
+  // let todolistId2 = v1()
+  //
+  // let [toDoLists, dispatchToTodolistReducer] = useReducer(todoListsReducer, [
+  //   {id: todolistId1, title: 'What to learn', filter: 'all', order: 0, addedDate: ''},
+  //   {id: todolistId2, title: 'What to buy', filter: 'all', order: 0, addedDate: ''}
+  // ])
+  //
+  // let [tasksObj, dispatchToTaskReducer] = useReducer(tasksReducer, {
+  //   [todolistId1]: [
+  //     {id: v1(), title: 'CSS', description: '', status: TaskStatuses.Completed, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
+  //     {id: v1(), title: 'JS', description: '', status: TaskStatuses.Completed, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
+  //     {id: v1(), title: 'React', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''},
+  //     {id: v1(), title: 'Redux', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId1, order: 0, addedDate: ''}],
+  //   [todolistId2]: [
+  //     {id: v1(), title: 'Book', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
+  //     {id: v1(), title: 'Milk', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
+  //     {id: v1(), title: 'Beer', description: '', status: TaskStatuses.New, priority: TaskPriorities.Later, startDate: '', deadline: '', todoListId: todolistId2, order: 0, addedDate: ''},
+  //   ]
+  // })
 
   // actions to tasks reducer
 
@@ -116,22 +116,22 @@ export const AppWithReducers: React.FC = () => {
           {/*<AddItemForm addItem={addTodoList}/>*/}
         </Grid>
         <Grid container spacing={3}>
-          {
-            toDoLists.map(tl => {
-              let tasksForTodolist = tasksObj[tl.id]
+          {/*{*/}
+          {/*  toDoLists.map(tl => {*/}
+          {/*    let tasksForTodolist = tasksObj[tl.id]*/}
 
-              if (tl.filter === 'completed') {
-                tasksForTodolist = tasksForTodolist.filter(task => task.status === TaskStatuses.Completed)
-              }
-              if (tl.filter === 'active') {
-                tasksForTodolist = tasksForTodolist.filter(task => task.status === TaskStatuses.New)
-              }
-              if (tl.filter === 'all') {
-                tasksForTodolist = tasksObj[tl.id]
-              }
+          {/*    if (tl.filter === 'completed') {*/}
+          {/*      tasksForTodolist = tasksForTodolist.filter(task => task.status === TaskStatuses.Completed)*/}
+          {/*    }*/}
+          {/*    if (tl.filter === 'active') {*/}
+          {/*      tasksForTodolist = tasksForTodolist.filter(task => task.status === TaskStatuses.New)*/}
+          {/*    }*/}
+          {/*    if (tl.filter === 'all') {*/}
+          {/*      tasksForTodolist = tasksObj[tl.id]*/}
+          {/*    }*/}
 
-              return <Grid item key={tl.id}>
-                <Paper style={{padding: '1rem'}}>
+              {/*return <Grid item key={tl.id}>*/}
+              {/*  <Paper style={{padding: '1rem'}}>*/}
                   {/*<Todolist*/}
                   {/*  id={tl.id}*/}
                   {/*  title={tl.title}*/}
@@ -145,10 +145,10 @@ export const AppWithReducers: React.FC = () => {
                   {/*  changeTaskTitle={changeTaskTitle}*/}
                   {/*  changeTodoListTitle={changeTodoListTitle}*/}
                   {/*/>*/}
-                </Paper>
-              </Grid>
-            })
-          }
+                {/*</Paper>*/}
+              {/*</Grid>*/}
+            {/*})*/}
+          {/*}*/}
         </Grid>
       </Container>
     </div>

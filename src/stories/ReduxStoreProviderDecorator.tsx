@@ -1,12 +1,12 @@
-import React from 'react';
-import { Provider } from "react-redux"
-import {  AppRootState } from '../store/store'
-import { combineReducers, createStore } from 'redux';
-import { tasksReducer } from '../store/tasks-reducer';
-import {todoListsReducer} from '../store/todolists-reducer';
-import {appReducer} from "../store/app-reducer";
-import {TaskPriorities, TaskStatuses} from "../api/todolists-api";
-
+// import React from 'react';
+// import { Provider } from "react-redux"
+// import {  AppRootState } from '../store/store'
+// import { combineReducers, createStore } from 'redux';
+// import { tasksReducer } from '../store/tasks-reducer';
+// import {todoListsReducer} from '../store/todolists-reducer';
+// import {appReducer} from "../store/app-reducer";
+// import {TaskPriorities, TaskStatuses} from "../api/todolists-api";
+//
 const Store = {
   title: 'ReduxStoreProviderDecorator'
 }

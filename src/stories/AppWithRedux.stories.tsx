@@ -1,6 +1,7 @@
 import {AppWithRedux} from '../components/AppWithRedux'
 import {store} from "../store/store";
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 // import { ReduxStoreProviderDecorator } from './ReduxStoreProviderDecorator'
 export default {
   title: 'AppWithRedux Component',
@@ -11,8 +12,10 @@ export default {
 export const AppWithReduxBaseExample = () => {
   return <>
     <Provider store={store}>
-    <AppWithRedux />
-      </Provider>
+      <BrowserRouter>
+        <AppWithRedux/>
+      </BrowserRouter>
+    </Provider>
   </>
 
 }

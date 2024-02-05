@@ -1,17 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as ReactDOMClient from "react-dom/client";
 import { Provider } from 'react-redux';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store/store';
 import {AppWithRedux} from "./components/AppWithRedux";
+import {BrowserRouter} from "react-router-dom";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const rootElement = document.getElementById("root") as HTMLElement;
+const root = ReactDOMClient.createRoot(rootElement);
+
 root.render(
   <Provider store={store}>
+    <BrowserRouter>
       <AppWithRedux/>
+    </BrowserRouter>
   </Provider>
 );
 

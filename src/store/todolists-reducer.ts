@@ -1,6 +1,7 @@
 import {todolistsApi, todoListType} from '../api/todolists-api'
 import {Dispatch} from "react";
-import {setAppStatusAC, SetStatusActionType, StatusType} from "./app-reducer";
+import {setAppStatusAC, SetErrorActionType, SetStatusActionType, StatusType} from "./app-reducer";
+import {handleServerAppError} from "../components/AppWithRedux/utils/error-utils";
 
 const initialState: Array<TodoListDomainType> = []
 
@@ -44,6 +45,8 @@ export const fetchTodolistsTC = () =>
     todolistsApi.getTodolists().then((res) => {
       dispatch(setTodoListAC(res.data))
       dispatch(setAppStatusAC('succeeded'))
+    }).catch(error =>{
+        handleServerAppError(error, dispatch)
     })
   }
 
@@ -88,6 +91,8 @@ type ActionsType =
   | ReturnType<typeof changeTodoListStatusAC>
   | ReturnType<typeof setTodoListAC>
   | SetStatusActionType
+  | SetErrorActionType
+
 
 export type FilterValuesType = 'all' | 'completed' | 'active'
 
