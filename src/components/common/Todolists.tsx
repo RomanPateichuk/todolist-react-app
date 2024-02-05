@@ -2,11 +2,14 @@ import {useAppWithRedux} from "../AppWithRedux/hooks/useAppWithRedux";
 import {TaskStatuses, TaskType} from "../../api/todolists-api";
 import {Grid, Paper} from "@mui/material";
 import {Todolist} from "./Todolist";
-import React from "react";
+import React, {useEffect} from "react";
 import {AddItemForm} from "../AddItemForm/AddItemForm";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootState} from "../../store/store";
+import {fetchTodolistsTC} from "../../store/todolists-reducer";
 
+export const Todolists =  () => {
 
-export const Todolists = React.memo(() => {
   const {
     todolists,
     tasks,
@@ -20,6 +23,7 @@ export const Todolists = React.memo(() => {
     addTask
   } = useAppWithRedux()
 
+  const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
   return <div>
     <Grid container style={{padding: '2rem'}}>
@@ -27,7 +31,7 @@ export const Todolists = React.memo(() => {
     </Grid>
     <Grid container spacing={3}>
       {
-        todolists.map(tl => {
+        isLoggedIn && todolists.map(tl => {
           let allTodoListsTasks = tasks[tl.id]
           let tasksForTodolist = allTodoListsTasks
 
@@ -63,7 +67,7 @@ export const Todolists = React.memo(() => {
       }
     </Grid>
   </div>
-})
+}
 
 
 //types

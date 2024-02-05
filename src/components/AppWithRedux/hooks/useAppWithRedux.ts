@@ -5,13 +5,11 @@ import {addTaskTC, removeTaskTC, updateTaskTC} from "../../../store/tasks-reduce
 import {
   addTodolistTC,
   changeTodoLisFilterAC,
-  changeTodolistTitleTC,
-  fetchTodolistsTC,
+  changeTodolistTitleTC, fetchTodolistsTC,
   removeTodolistTC, TodoListDomainType
 } from "../../../store/todolists-reducer";
 import {FilterValuesType, TasksStateType} from "../../common/Todolists";
 import {TaskStatuses} from "../../../api/todolists-api";
-import {useNavigate} from "react-router-dom";
 
 export const useAppWithRedux = () =>{
   console.log("AppWithCustomHooks is called");
@@ -19,16 +17,11 @@ export const useAppWithRedux = () =>{
   const todolists = useSelector<AppRootState, Array<TodoListDomainType>>(state => state.todolists)
   const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
 
-  const isLoggedIn = useSelector<AppRootState, boolean>(state=> state.auth.isLoggedIn)
-  const navigate = useNavigate();
-
   useEffect(()=>{
-    if(!isLoggedIn){
-      return navigate('/login', {replace: true})
-    }
-    else{dispatch(fetchTodolistsTC())}
+    dispatch(fetchTodolistsTC())
   },[])
-  
+
+
   // actions to tasks reducer
 
   const removeTask = useCallback((id: string, todolistId: string) => {

@@ -35,10 +35,15 @@ export const Todolist = React.memo(function (props: PropsType) {
     removeTask, changeFilter, addTask, changeStatus,
     removeTodolist, changeTaskTitle, changeTodoListTitle } = props
 
-  console.log("TodoList is called");
-  const onAllClickHandler = useCallback(() => changeFilter('all', id), [changeFilter, id])
-  const onActivecliCkHandler = useCallback(() => changeFilter('active', id), [changeFilter, id])
-  const onCompletedClickHandler = useCallback(() => changeFilter('completed', id), [changeFilter, id])
+  const onAllClickHandler = useCallback(
+    () => changeFilter('all', id), [changeFilter, id])
+
+  const onActivecliCkHandler = useCallback(
+    () => changeFilter('active', id), [changeFilter, id])
+
+  const onCompletedClickHandler = useCallback(
+    () => changeFilter('completed', id), [changeFilter, id])
+
   const onRemoveTodolist = useCallback(() => removeTodolist(id), [removeTodolist, id])
 
   const dispatch = useDispatch<any>()

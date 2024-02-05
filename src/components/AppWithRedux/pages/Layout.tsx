@@ -1,4 +1,4 @@
-import {Outlet} from 'react-router-dom';
+import {Outlet, useNavigate} from 'react-router-dom';
 import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -14,9 +14,10 @@ export const Layout = () => {
     // @ts-ignore
     const status = useSelector<AppRootState, string>(state=> state.app.status)
     const dispatch = useDispatch<any>()
-
+    const navigate = useNavigate()
     const logoutHandler = useCallback(() => {
       dispatch(logoutTC())
+      navigate('/login')
     }, [])
 
 

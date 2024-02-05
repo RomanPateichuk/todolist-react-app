@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "../../store/auth-reducer";
 import {AppRootState} from "../../store/store";
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from "react-router-dom";
 
 export const Login = ()=>{
   const validationSchema = yup.object({
@@ -14,14 +14,14 @@ export const Login = ()=>{
       .required('Email is required'),
     password: yup
       .string()
-      .min(8, 'Password should be of minimum 8 characters length')
       .required('Password is required'),
   });
-
+  const navigate = useNavigate()
   const dispatch = useDispatch<any>()
-  const navigate = useNavigate();
-
-  const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
+  // @ts-ignore
+  const errors = useSelector<string>((state: AppRootState )=> state.app.error)
+  // @ts-ignore
+  const status = useSelector<string>((state: AppRootState )=> state.app.status)
 
   const formik = useFormik({
 
@@ -33,13 +33,11 @@ export const Login = ()=>{
     validationSchema: validationSchema,
     onSubmit: values => {
       dispatch(loginTC(values))
+      if(!errors && status !=='failed'){
+        navigate('/')
+      }
     },
   });
-
-  if(isLoggedIn){
-    // not working
-    navigate('/', {replace: true})
-  }
 
   return <Grid container alignItems="center" justifyContent="center">
     <Grid item xs={4}>
